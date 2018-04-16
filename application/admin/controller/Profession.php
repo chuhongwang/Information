@@ -4,6 +4,8 @@ namespace app\admin\controller;
 \think\Loader::import('controller/Controller', \think\Config::get('traits_path') , EXT);
 
 use app\admin\Controller;
+use think\Loader;
+use think\Db;
 
 class Profession extends Controller
 {
@@ -19,5 +21,9 @@ class Profession extends Controller
         if ($this->request->param("profession_name")) {
             $map['profession_name'] = ["like", "%" . $this->request->param("profession_name") . "%"];
         }
+    }
+    protected function beforeAdd(){
+        $collage_list=Loader::model('Collage')->getList();
+        $this->view->assign('collage_list',$collage_list);
     }
 }

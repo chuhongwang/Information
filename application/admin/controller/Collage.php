@@ -4,6 +4,7 @@ namespace app\admin\controller;
 \think\Loader::import('controller/Controller', \think\Config::get('traits_path') , EXT);
 
 use app\admin\Controller;
+use think\Loader;
 
 class Collage extends Controller
 {

@@ -6,14 +6,19 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">专业名称：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="专业名称" name="profession_name" value="{$vo.profession_name ?? ''}" >
+                <input type="text" class="input-text" placeholder="专业名称" name="profession_name"
+                       value="{$vo.profession_name ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属学院：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属学院" name="collage_id" value="{$vo.collage_id ?? ''}" >
+                <select class="select" name="collage_id" value="{$vo.collage_id ?? ''}">
+                    {foreach name='collage_list' item='cl'}
+                    <option value="{$cl.id}">{$cl.collage_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -43,7 +48,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret){
+            callback: function (ret) {
                 ajax_progress(ret);
             }
         });
