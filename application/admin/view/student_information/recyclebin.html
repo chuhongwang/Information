@@ -1,0 +1,12 @@
+{extend name="template/recyclebin" /}
+{block name="script"}
+<script>
+    $(function () {
+        $("[name='gender']").find("[value='{$Request.param.gender}']").attr("selected", true);
+        $("[name='year']").find("[value='{$Request.param.year}']").attr("selected", true);
+        $("[name='collage_id']").find("[value='{$Request.param.collage_id}']").attr("selected", true);
+        $("[name='profession_id']").find("[value='{$Request.param.profession_id}']").attr("selected", true);
+        $("[name='class_id']").find("[value='{$Request.param.class_id}']").attr("selected", true);
+    })
+</script>
+{/block}
