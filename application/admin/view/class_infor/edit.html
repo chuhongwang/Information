@@ -13,14 +13,22 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属专业：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属专业" name="profession_id" value="{$vo.profession_id ?? ''}" >
+                <select class="select" name="profession_id" value="{$vo.profession_id ?? ''}">
+                    {foreach name='pro_list' item='ls'}
+                    <option value="{$ls.id}">{$ls.profession_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属学院：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属学院" name="collage_id" value="{$vo.collage_id ?? ''}" >
+                <select class="select" name="collage_id" value="{$vo.collage_id ?? ''}">
+                    {foreach name='collage_list' item='cl'}
+                    <option value="{$cl.id}">{$cl.collage_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -38,7 +46,8 @@
 <script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
 <script>
     $(function () {
-
+        $("[name='profession_id']").find("[value='{$vo.profession_id ?? '0'}']").attr("selected", true);
+        $("[name='collage_id']").find("[value='{$vo.collage_id ?? '0'}']").attr("selected",true);
 
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',

@@ -6,91 +6,114 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">学生学号：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="学生学号" name="student_num" value="{$vo.student_num ?? ''}" >
+                <input type="text" class="input-text" placeholder="学生学号" name="student_num"
+                       value="{$vo.student_num ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">学生姓名：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="学生姓名" name="student_name" value="{$vo.student_name ?? ''}" >
+                <input type="text" class="input-text" placeholder="学生姓名" name="student_name"
+                       value="{$vo.student_name ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">身份证号：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}"  datatype="/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/" nullmsg="请填写身份证号" errormsg="身份证号格式错误" ignore="ignore">
+                <!--<input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}" datatype="/^([\d]{17}[xX\d]|[\d]{15})$/" nullmsg="请填写身份证号" errormsg="身份证号格式错误" ignore="ignore">-->
+                <input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">性别：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="性别" name="gender" value="{$vo.gender ?? ''}" >
+                <select class="select" name="gender" value="{$vo.gender ?? ''}">
+                    <option value="1">男</option>
+                    <option value="2">女</option>
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">籍贯：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="籍贯" name="nation" value="{$vo.nation ?? ''}" >
+                <input type="text" class="input-text" placeholder="籍贯" name="nation" value="{$vo.nation ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">出生日期：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="出生日期" name="birthday" value="{$vo.birthday ?? ''}" >
+                <input type="text" class="input-text" placeholder="出生日期" name="birthday" value="{$vo.birthday ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">联系电话：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="联系电话" name="phone" value="{$vo.phone ?? ''}"  datatype="/^1[3|4|5|7|8|9][0-9]{9}$/" nullmsg="请填写联系电话" errormsg="手机号格式错误" ignore="ignore">
+                <input type="text" class="input-text" placeholder="联系电话" name="phone" value="{$vo.phone ?? ''}"
+                       datatype="/^1[3|4|5|7|8|9][0-9]{9}$/" nullmsg="请填写联系电话" errormsg="手机号格式错误" ignore="ignore">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">家庭住址：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="家庭住址" name="address" value="{$vo.address ?? ''}" >
+                <input type="text" class="input-text" placeholder="家庭住址" name="address" value="{$vo.address ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">政治面貌：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="政治面貌" name="face" value="{$vo.face ?? ''}" >
+                    <select class="select" name="face" value="{$vo.face ?? ''}">
+                    <option value="1">群众</option>
+                    <option value="2">团员</option>
+                    <option value="3">党员</option>
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">年级：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="年级" name="year" value="{$vo.year ?? ''}" >
+                <input type="text" class="input-text" placeholder="年级" name="year" value="{$vo.year ?? ''}">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属学院：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属学院" name="collage_id" value="{$vo.collage_id ?? ''}" >
+                <select class="select" name="collage_id" value="{$vo.collage_id ?? ''}">
+                    {foreach name='collage_list' item='cl'}
+                    <option value="{$cl.id}">{$cl.collage_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属专业：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属专业" name="profession_id" value="{$vo.profession_id ?? ''}" >
+                <select class="select" name="profession_id" value="{$vo.profession_id ?? ''}">
+                    {foreach name='pro_list' item='pl'}
+                    <option value="{$pl.id}">{$pl.profession_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">所属班级：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="所属班级" name="class_id" value="{$vo.class_id ?? ''}" >
+                <select class="select" name="class_id" value="{$vo.class_id ?? ''}">
+                    {foreach name='class_list' item='cl'}
+                    <option value="{$cl.id}">{$cl.class_name}</option>
+                    {/foreach}
+                </select>
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -108,7 +131,9 @@
 <script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
 <script>
     $(function () {
-
+        $("[name='collage_id']").find("[value='{$vo.collage_id ?? ''}']").attr("selected",true);
+        $("[name='profession_id']").find("[value='{$vo.profession_id ?? ''}']").attr("selected",true);
+        $("[name='class_id']").find("[value='{$vo.class_id ?? ''}']").attr("selected",true);
 
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',
@@ -120,7 +145,7 @@
             tiptype: 2,
             ajaxPost: true,
             showAllError: true,
-            callback: function (ret){
+            callback: function (ret) {
                 ajax_progress(ret);
             }
         });

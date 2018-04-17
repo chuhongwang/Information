@@ -26,4 +26,8 @@ class Profession extends Controller
         $collage_list=Loader::model('Collage')->getList();
         $this->view->assign('collage_list',$collage_list);
     }
+    protected function beforeEdit(){
+        $collage_list=Loader::model('Collage')->getList();
+        $this->view->assign('collage_list',$collage_list);
+    }
 }
