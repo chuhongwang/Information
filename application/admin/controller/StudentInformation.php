@@ -18,12 +18,33 @@ class StudentInformation extends Controller
         if ($this->request->param("id")) {
             $map['id'] = ["like", "%" . $this->request->param("id") . "%"];
         }
+        if ($this->request->param("year")) {
+            $map['year'] = ["like", "%" . $this->request->param("year") . "%"];
+        }
         if ($this->request->param("student_num")) {
             $map['student_num'] = ["like", "%" . $this->request->param("student_num") . "%"];
         }
         if ($this->request->param("student_name")) {
             $map['student_name'] = ["like", "%" . $this->request->param("student_name") . "%"];
         }
+        if ($this->request->param("gender")) {
+            $map['gender'] = $this->request->param("gender");
+        }
+        if ($this->request->param("collage_id")) {
+            $map['collage_id'] = $this->request->param("collage_id");
+        }
+        if ($this->request->param("profession_id")) {
+            $map['profession_id'] = $this->request->param("profession_id");
+        }
+        if ($this->request->param("class_id")) {
+            $map['class_id'] = $this->request->param("class_id");
+        }
+        $collagList=\db('Collage')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $proList=\db('Profession')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $classList=\db('ClassInfor')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $this->view->assign('collageList',$collagList);
+        $this->view->assign('proList',$proList);
+        $this->view->assign('classList',$classList);
     }
 
     protected function beforeAdd(){

@@ -9,4 +9,16 @@ class StudentInformation extends Model
     protected $name = 'student_information';
     // 开启自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
+
+    public function CollageName(){
+        return $this->hasOne('Collage','id','collage_id');
+    }
+
+    public function ProfessionName(){
+        return $this->hasOne('Profession','id','profession_id');
+    }
+
+    public function ClassName(){
+        return $this->hasOne('ClassInfor','id','class_id');
+    }
 }

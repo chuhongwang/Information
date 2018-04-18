@@ -2,29 +2,40 @@
     <input type="text" class="input-text" style="width:250px" placeholder="编号" name="id" value="{$Request.param.id}" >
     <input type="text" class="input-text" style="width:250px" placeholder="学生学号" name="student_num" value="{$Request.param.student_num}" >
     <input type="text" class="input-text" style="width:250px" placeholder="学生姓名" name="student_name" value="{$Request.param.student_name}" >
+    <input type="text" class="input-text" style="width:250px" placeholder="年级" name="year" value="{$Request.param.year}" >
+    男女:
     <div class="select-box" style="width:250px">
         <select name="gender" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            <option value="1">男</option>
+            <option value="2">女</option>
         </select>
     </div>
-    <div class="select-box" style="width:250px">
-        <select name="year" class="select">
-            <option value=""></option>
-        </select>
-    </div>
+    所属学院:
     <div class="select-box" style="width:250px">
         <select name="collage_id" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            {foreach name='collageList' item='cL'}
+            <option value="{$cL.id}">{$cL.collage_name}</option>
+            {/foreach}
         </select>
     </div>
+    所属专业:
     <div class="select-box" style="width:250px">
         <select name="profession_id" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            {foreach name='proList' item='pL'}
+            <option value="{$pL.id}">{$pL.profession_name}</option>
+            {/foreach}
         </select>
     </div>
+    所属班级:
     <div class="select-box" style="width:250px">
         <select name="class_id" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            {foreach name='classList' item='CL'}
+            <option value="{$CL.id}">{$CL.class_name}</option>
+            {/foreach}
         </select>
     </div>
     <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>

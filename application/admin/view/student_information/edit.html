@@ -47,7 +47,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">出生日期：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text" placeholder="出生日期" name="birthday" value="{$vo.birthday ?? ''}">
+                <input type="text" class="input-text Wdate"  placeholder="出生日期" name="birthday" value="{$vo.birthday ?? ''}" {literal} onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal} >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -129,11 +129,14 @@
 {/block}
 {block name="script"}
 <script type="text/javascript" src="__LIB__/Validform/5.3.2/Validform.min.js"></script>
+<script type="text/javascript" src="__LIB__/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(function () {
         $("[name='collage_id']").find("[value='{$vo.collage_id ?? ''}']").attr("selected",true);
         $("[name='profession_id']").find("[value='{$vo.profession_id ?? ''}']").attr("selected",true);
         $("[name='class_id']").find("[value='{$vo.class_id ?? ''}']").attr("selected",true);
+        $("[name='gender']").find("[value='{$vo.gender ?? ''}']").attr("selected",true);
+        $("[name='face']").find("[value='{$vo.face ?? ''}']").attr("selected",true);
 
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',
