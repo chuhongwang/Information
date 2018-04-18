@@ -1,14 +1,23 @@
 <form class="mb-20" method="get" action="{:\\think\\Url::build($Request.action)}">
-    <input type="text" class="input-text" style="width:250px" placeholder="编号" name="id" value="{$Request.param.id}" >
-    <input type="text" class="input-text" style="width:250px" placeholder="班级名称" name="class_name" value="{$Request.param.class_name}" >
+    <input type="text" class="input-text" style="width:250px" placeholder="编号" name="id" value="{$Request.param.id}">
+    <input type="text" class="input-text" style="width:250px" placeholder="班级名称" name="class_name"
+           value="{$Request.param.class_name}">
+    所属专业:
     <div class="select-box" style="width:250px">
         <select name="profession_id" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            {foreach name='proList' item='PL'}
+            <option value="{$PL.id}">{$PL.profession_name}</option>
+            {/foreach}
         </select>
     </div>
+    所属学院:
     <div class="select-box" style="width:250px">
         <select name="collage_id" class="select">
-            <option value=""></option>
+            <option value="">全部</option>
+            {foreach name='collageList' item='CL'}
+            <option value="{$CL.id}">{$CL.collage_name}</option>
+            {/foreach}
         </select>
     </div>
     <button type="submit" class="btn btn-success"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>

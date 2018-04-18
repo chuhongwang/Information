@@ -21,6 +21,11 @@ class Profession extends Controller
         if ($this->request->param("profession_name")) {
             $map['profession_name'] = ["like", "%" . $this->request->param("profession_name") . "%"];
         }
+        if ($this->request->param("collage_id")) {
+            $map['collage_id'] = $this->request->param("collage_id");
+        }
+        $collageList=\db('Collage')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $this->view->assign('collageList',$collageList);
     }
     protected function beforeAdd(){
         $collage_list=Loader::model('Collage')->getList();

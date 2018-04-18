@@ -20,6 +20,17 @@ class ClassInfor extends Controller
         if ($this->request->param("class_name")) {
             $map['class_name'] = ["like", "%" . $this->request->param("class_name") . "%"];
         }
+        if ($this->request->param("profession_id")) {
+            $map['profession_id'] = $this->request->param("profession_id");
+        }
+        if ($this->request->param("collage_id")) {
+            $map['collage_id'] = $this->request->param("collage_id");
+        }
+
+        $collageList=db('Collage')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $proList=db('Profession')->where(['isdelete'=>0])->where(['status'=>1])->select();
+        $this->view->assign('collageList',$collageList);
+        $this->view->assign('proList',$proList);
     }
 
     protected function beforeAdd(){
