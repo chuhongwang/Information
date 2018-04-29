@@ -4,26 +4,26 @@
     <form class="form form-horizontal" id="form" method="post" action="{:\\think\\Request::instance()->baseUrl()}">
         <input type="hidden" name="id" value="{$vo.id ?? ''}">
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">学生学号：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>学生学号：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 <input type="text" class="input-text" placeholder="学生学号" name="student_num"
-                       value="{$vo.student_num ?? ''}">
+                       value="{$vo.student_num ?? ''}" datatype="*" nullmsg="学号不能为空">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">学生姓名：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>学生姓名：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 <input type="text" class="input-text" placeholder="学生姓名" name="student_name"
-                       value="{$vo.student_name ?? ''}">
+                       value="{$vo.student_name ?? ''}" datatype="*" nullmsg="姓名不能为空">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">身份证号：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>身份证号：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <!--<input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}" datatype="/^([\d]{17}[xX\d]|[\d]{15})$/" nullmsg="请填写身份证号" errormsg="身份证号格式错误" ignore="ignore">-->
-                <input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}">
+                <input type="text" class="input-text" placeholder="身份证号" name="id_number" value="{$vo.id_number ?? ''}"
+                       datatype="*" nullmsg="身份证号不能为空">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -47,15 +47,16 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">出生日期：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                <input type="text" class="input-text Wdate"  placeholder="出生日期" name="birthday" value="{$vo.birthday ?? ''}" {literal} onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal} >
+                <input type="text" class="input-text Wdate" placeholder="出生日期" name="birthday"
+                       value="{$vo.birthday ?? ''}" {literal} onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" {/literal} >
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
         <div class="row cl">
-            <label class="form-label col-xs-3 col-sm-3">联系电话：</label>
+            <label class="form-label col-xs-3 col-sm-3"><span class="c-red">*</span>联系电话：</label>
             <div class="formControls col-xs-6 col-sm-6">
                 <input type="text" class="input-text" placeholder="联系电话" name="phone" value="{$vo.phone ?? ''}"
-                       datatype="/^1[3|4|5|7|8|9][0-9]{9}$/" nullmsg="请填写联系电话" errormsg="手机号格式错误" ignore="ignore">
+                       datatype="*" nullmsg="电话不能为空">
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
@@ -69,7 +70,7 @@
         <div class="row cl">
             <label class="form-label col-xs-3 col-sm-3">政治面貌：</label>
             <div class="formControls col-xs-6 col-sm-6">
-                    <select class="select" name="face" value="{$vo.face ?? ''}">
+                <select class="select" name="face" value="{$vo.face ?? ''}">
                     <option value="1">群众</option>
                     <option value="2">团员</option>
                     <option value="3">党员</option>
@@ -117,11 +118,45 @@
             </div>
             <div class="col-xs-3 col-sm-3"></div>
         </div>
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3">毕业去向：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                <select class="select" name="graduation" value="{$vo.graduation ?? ''}">
+                    <option value="1">就业</option>
+                    <option value="2">考研</option>
+                    <option value="3">考公务员</option>
+                    <option value="4">出国留学</option>
+                    <option value="5">创业</option>
+                </select>
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        {foreach name='question_list' item='ql'}
+        <div class="row cl">
+            <label class="form-label col-xs-3 col-sm-3">{$ql.question}：</label>
+            <div class="formControls col-xs-6 col-sm-6">
+                {php}
+                $id=$ql['id'];
+                $answer_list=db('Answer')->field('id,answer_type,answer')->where(['question_id'=>$id,'isdelete'=>0,'status'=>1])->select();
+                foreach($answer_list as $k=>$value){
+                {/php}
+                <div class="radio-box">
+                    <input type='radio' name="question_{$ql['id']}" value="{$value['answer_type']}"/>{$value['answer_type'].$value['answer']} <br>
+                    <input type="hidden" value="{$ql['id']}">
+                </div>
+                {php}
+                }
+                {/php}
+            </div>
+            <div class="col-xs-3 col-sm-3"></div>
+        </div>
+        {/foreach}
 
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <button type="submit" class="btn btn-primary radius">&nbsp;&nbsp;提交&nbsp;&nbsp;</button>
-                <button type="button" class="btn btn-default radius ml-20" onClick="layer_close();">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                <button type="button" class="btn btn-default radius ml-20" onClick="layer_close();">&nbsp;&nbsp;取消&nbsp;&nbsp;
+                </button>
             </div>
         </div>
     </form>
@@ -132,11 +167,11 @@
 <script type="text/javascript" src="__LIB__/My97DatePicker/WdatePicker.js"></script>
 <script>
     $(function () {
-        $("[name='collage_id']").find("[value='{$vo.collage_id ?? ''}']").attr("selected",true);
-        $("[name='profession_id']").find("[value='{$vo.profession_id ?? ''}']").attr("selected",true);
-        $("[name='class_id']").find("[value='{$vo.class_id ?? ''}']").attr("selected",true);
-        $("[name='gender']").find("[value='{$vo.gender ?? ''}']").attr("selected",true);
-        $("[name='face']").find("[value='{$vo.face ?? ''}']").attr("selected",true);
+        $("[name='collage_id']").find("[value='{$vo.collage_id ?? ''}']").attr("selected", true);
+        $("[name='profession_id']").find("[value='{$vo.profession_id ?? ''}']").attr("selected", true);
+        $("[name='class_id']").find("[value='{$vo.class_id ?? ''}']").attr("selected", true);
+        $("[name='gender']").find("[value='{$vo.gender ?? ''}']").attr("selected", true);
+        $("[name='face']").find("[value='{$vo.face ?? ''}']").attr("selected", true);
 
         $('.skin-minimal input').iCheck({
             checkboxClass: 'icheckbox-blue',

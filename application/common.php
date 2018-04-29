@@ -32,3 +32,15 @@ function face($id)
     ];
     return empty($faceList[$id]) ? "--" : $faceList[$id];
 }
+
+function graduation($id)
+{
+    $graduationList = [
+        1 => '就业',
+        2 => '考研',
+        3 => '考公务员',
+        4 => '出国留学',
+        5 => '创业',
+    ];
+    return empty($graduationList[$id]) ? '--' : $graduationList[$id];
+}

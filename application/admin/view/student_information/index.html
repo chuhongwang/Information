@@ -44,4 +44,29 @@
     })
 </script>
 {/block}
+{block name='script'}
+<script>
+    $(function () {
+        table_fixed('.table-border');
+    });
+
+    /**
+     * 表格无限宽横向溢出
+     * @param selector
+     * @param width 不赋值默认为th的width值和
+     */
+    function table_fixed(selector, width) {
+        $obj = $(selector);
+        //未设置宽度自动获取width属性的宽
+        if (typeof width === "undefined") {
+            width = 0;
+            $obj.find("tr:first th").each(function () {
+                width += parseInt($(this).attr("width") || $(this).innerWidth());
+            })
+        }
+        $obj.css({"width": width + "px", "table-layout": "fixed"});
+        $obj.wrap('<div style="width:100%;overflow:auto"></div>');
+    }
+</script>
+{/block}
 
