@@ -10,6 +10,15 @@ class StudentAnswer extends Controller
     use \app\admin\traits\controller\Controller;
     // 方法黑名单
     protected static $blacklist = [];
+    protected function filter(&$map)
+    {
+        if ($this->request->param("id")) {
+            $map['id'] = ["like", "%" . $this->request->param("id") . "%"];
+        }
 
-    
+    }
+
+    public function analyse(){
+       return $this->view->fetch('analyse');
+    }
 }

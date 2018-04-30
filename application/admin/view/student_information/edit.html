@@ -141,8 +141,7 @@
                 foreach($answer_list as $k=>$value){
                 {/php}
                 <div class="radio-box">
-                    <input type='radio' name="question_{$ql['id']}" value="{$value['answer_type']}"/>{$value['answer_type'].$value['answer']} <br>
-                    <input type="hidden" value="{$ql['id']}">
+                    <input type='radio' name="question{$ql['id']}" value="{$value['answer_type']}"/>{$value['answer_type'].$value['answer']} <br>
                 </div>
                 {php}
                 }

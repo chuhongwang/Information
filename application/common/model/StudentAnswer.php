@@ -9,4 +9,7 @@ class StudentAnswer extends Model
     protected $name = 'student_answer';
     // 开启自动写入时间戳字段
     protected $autoWriteTimestamp = 'int';
+    public function question(){
+        return $this->hasOne('Question','id','question_id');
+    }
 }

@@ -76,11 +76,39 @@ class StudentInformation extends Controller
         if ($this->request->isAjax()) {
             // 插入
             $data = $this->request->except(['id']);
-            var_dump($data);exit();
+            //基本信息
+            $data_infor=[];
+            //问卷信息
+            $data_answer=[];
+            $data_infor['student_num']=$data['student_num'];
+            $data_infor['student_name']=$data['student_name'];
+            $data_infor['id_number']=$data['id_number'];
+            $data_infor['gender']=$data['gender'];
+            $data_infor['nation']=$data['nation'];
+            $data_infor['birthday']=$data['birthday'];
+            $data_infor['phone']=$data['phone'];
+            $data_infor['address']=$data['address'];
+            $data_infor['face']=$data['face'];
+            $data_infor['year']=$data['year'];
+            $data_infor['collage_id']=$data['collage_id'];
+            $data_infor['profession_id']=$data['profession_id'];
+            $data_infor['class_id']=$data['class_id'];
+            $data_infor['graduation']=$data['graduation'];
             // 简单的直接使用db写入
             Db::startTrans();
             try{
-                $db=\db('student_information')->insert($data);
+                $db=\db('student_information')->insert($data_infor);
+                //接收问卷答案
+                $i=1;
+                while ($i<count($data)){
+                    if(isset($data['question'.$i])){
+                        $data_answer['student_num']=$data['student_num'];
+                        $data_answer['question_id']=$i;
+                        $data_answer['answer_id']=$data['question'.$i];
+                        $db_answer=\db('student_answer')->insert($data_answer);
+                    }
+                    $i++;
+                }
                 // 提交事务
                 Db::commit();
             }catch (\Exception $e){
